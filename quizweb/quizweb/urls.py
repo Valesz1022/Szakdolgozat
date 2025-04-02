@@ -22,7 +22,9 @@ from django.conf import settings
 from django.shortcuts import render
 
 urlpatterns = [
-    path('', include('register.urls')),
+    path('', include('login.urls')),
     path('admin/', admin.site.urls),
+    path('register/', include('register.urls')),
+    path('home/', include('home.urls')),
 
 ]
