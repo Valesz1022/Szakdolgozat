@@ -22,12 +22,12 @@
     
     <div class="mb-3">
       <label for="id_username" class="form-label">Username</label>
-      {{ form.username }}  <!-- Dynamikusan jeleníti meg a form-ot -->
+      {{ form.username }}
     </div>
 
     <div class="mb-3">
       <label for="id_password" class="form-label">Password</label>
-      {{ form.password }}  <!-- Dynamikusan jeleníti meg a form-ot -->
+      {{ form.password }}
     </div>
 
     <button type="submit" class="btn btn-primary">Login</button>
@@ -37,4 +37,6 @@
     <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
   </div>
 </div>
+
+<script src="{% static 'javascript/login.js' %}"></script>
 {% endblock %}
