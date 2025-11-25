@@ -1,10 +1,7 @@
 #!/bin/bash
+set -o errexit
 
-# Migrate database
-python manage.py migrate
-
-# Collect static files (ha vannak)
+python manage.py migrate --noinput
 python manage.py collectstatic --noinput
 
-# Indítsd a Django-t
-python manage.py runserver 0.0.0.0:$PORT
+gunicorn quizweb.wsgi:application --bind 0.0.0.0:$PORT
