@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %}Üzenetek{% endblock %}
+
+{% block content %}
+<h2>Üzenetek</h2>
+
+{% if no_message_text %}
+    <p>{{ no_message_text }}</p>
+{% else %}
+    <table>
+        <tr>
+            <th>Címzett</th>
+            <th>Cím</th>
+            <th>Üzenet</th>
+        </tr>
+        {% for message in user_messages %}
+        <tr>
+            <td>{{ message.to_user }}</td>
+            <td>{{ message.title }}</td>
+            <td>{{ message.message }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+<link rel="stylesheet" href="{% static 'css/messages.css' %}" type="text/css"/>
+{% endblock %}

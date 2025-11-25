@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block title %}Üzenet küldése{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Üzenet küldése</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Küldés</button>
+    </form>
+
+    <hr>
+
+    <h3>Küldött üzenetek</h3>
+    {% if sent_messages %}
+        <ul class="list-group">
+            {% for message in sent_messages %}
+            <li class="list-group-item">
+                <strong>Csapat:</strong> {{ message.team.team_name }} |
+                <strong>Diák:</strong> {{ message.recipient.username }} |
+                <strong>Idő:</strong> {{ message.timestamp|date:"Y-m-d H:i" }}<br>
+                {{ message.content }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nem küldött még üzenetet.</p>
+    {% endif %}
+</div>
+{% endblock %}
